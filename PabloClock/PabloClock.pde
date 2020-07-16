@@ -41,14 +41,15 @@ void draw()
      
    }
    
-   if (minute < 10) {
+   if (minute < 10) 
+   {
     text(hour + ":0" + minute + ":" + second, (width / 2) - 290, (height / 2) + 20);
-    } else if (second < 10) 
-    {
+   } else if (second < 10) 
+   {
       text(hour + ":" + minute + ":0" + second, (width / 2) - 290, (height / 2) + 20);
-    } else {
+   } else {
       text(hour + ":" + minute + ":" + second, (width / 2) - 290, (height / 2) + 20);
-    }
+   }
    
  }
 }
