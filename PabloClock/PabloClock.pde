@@ -20,10 +20,8 @@ void draw()
   second = second();
   if (second < 10) 
   {
-    //textAlign(CENTER);
     text(hour + ":" + minute + ":0" + second, (width / 2) - 290, (height / 2) + 20);
   } else {
-    //textAlign(CENTER);
     text(hour + ":" + minute + ":" + second, (width / 2) - 290, (height / 2) + 20);
   }
 }
