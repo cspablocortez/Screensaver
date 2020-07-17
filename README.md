@@ -7,3 +7,4 @@ This is a portable screensaver written in Processing.
 2. Get user location to display accurate weather reading
 3. Background display without interrupting clock ✅
 4. Fix hour display to accomodate single digits
+5. Add weather icon
