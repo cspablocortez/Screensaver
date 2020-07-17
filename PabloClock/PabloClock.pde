@@ -4,6 +4,9 @@ float x, y, extent;
 float r, g, b;
 String test;
 Float temp;
+PImage img;
+String imgURL;
+
 
 void setup()
 {
@@ -11,6 +14,8 @@ void setup()
   background(0);
   font = createFont("Monaco", 40, false);
   thread("getWeather");
+  
+  
 }
 
 void draw()
@@ -22,13 +27,18 @@ void draw()
   minute = minute();
   second = second();
   
- if (frameCount % 5 == 0)
- {
-   createBackgroundColor();
+ //if (frameCount % 6 == 0)
+ //{
+ //  createBackgroundColor();
+ //  generateSquares();
+ //  displayHour();
+ //  displayWeather();
+ //} 
+ 
+ createBackgroundColor();
    generateSquares();
    displayHour();
    displayWeather();
- } 
  
 }
 
@@ -71,26 +81,24 @@ void displayHour()
 
 void displayWeather()
 {
-    if (temp != null)
+    if (temp != null && imgURL != null)
    {
      textSize(30);
      temp = (float)floor(temp);
      text(temp + "F°", (width / 2) - 50, (height / 2) + 130);
+     img = loadImage(imgURL);
+     image(img, 250, 370);
    } 
    else 
    {
      textSize(30);
      text("Loading...", (width / 2) - 70, (height / 2) + 130);
    }
+   
 }
 
 void getWeather() 
 {
- 
-  //String apiKey = "c90e326baa0f74708fce9458f554b4d8";
-  //String latitude = "36.169941";
-  //String longitude = "-115.139832";
-  //String url = "https://api.darksky.net/forecast/" + apiKey + "/" + latitude +"," + longitude;
   
   String apiKey = "334d173929684fc2e02a7bcf714dee2f";
   String cityId = "5506956";
@@ -98,12 +106,14 @@ void getWeather()
   
   
   JSONObject json = loadJSONObject(url);  
-  //temp = json.getJSONObject("currently").getFloat("temperature");
-  //println(temp);
-  
-  //println(json);
   temp = json.getJSONObject("main").getFloat("temp");
-
+  
+  JSONArray weatherArray = json.getJSONArray("weather");
+  JSONObject weatherObject = weatherArray.getJSONObject(0);
+  
+  imgURL = weatherObject.getString("icon");
+  imgURL = "http://openweathermap.org/img/wn/" + imgURL + "@2x.png";
+  
 }
 
 void createBackgroundColor()
