@@ -60,6 +60,7 @@ void draw()
 
 void getWeather() 
 {
+    
   String apiKey = "c90e326baa0f74708fce9458f554b4d8";
   String latitude = "36.169941";
   String longitude = "-115.139832";
